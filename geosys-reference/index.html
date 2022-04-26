@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Geosys class - GeosysPy documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Geosys class";
+        var mkdocs_page_input_path = "geosys-reference.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GeosysPy documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Geosys class</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys">geosyspy.geosys.Geosys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.__init__">__init__()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.create_schema_id">create_schema_id()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.download_image">download_image()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.get_metrics">get_metrics()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.get_satellite_coverage_image_references">get_satellite_coverage_image_references()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.get_satellite_image_time_series">get_satellite_image_time_series()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.get_time_series">get_time_series()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geosyspy.geosys.Geosys.push_metrics">push_metrics()</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../constants-reference/">Constants</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GeosysPy documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Geosys class</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="geosys">Geosys</h1>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="geosyspy.geosys.Geosys"></a>
+    <div class="doc doc-contents first">
+
+      <p>Geosys is the main client class to access all the Geosys APIs capabilities.</p>
+<p><code>client = Geosys(api_client_id, api_client_secret, api_username, api_password, env, region)</code></p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>str_api_client_id</strong> (<code>str</code>) – The client id</p></li>
+            <li><p><strong>str_api_client_secret</strong> (<code>str</code>) – The client secret</p></li>
+            <li><p><strong>str_api_username</strong> (<code>str</code>) – The api username</p></li>
+            <li><p><strong>str_api_password</strong> (<code>str</code>) – The api user password</p></li>
+            <li><p><strong>enum_env</strong> (<code>enum</code>) – 'Env.PROD' or 'Env.PREPROD'</p></li>
+            <li><p><strong>enum_region</strong> (<code>enum</code>) – 'Region.NA' or 'Region.EU'</p></li>
+            <li><p><strong>str_priority_queue</strong> (<code>str</code>) – 'realtime' or 'bulk'</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Geosys</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Geosys is the main client class to access all the Geosys APIs capabilities.</span>
+
+<span class="sd">    `client = Geosys(api_client_id, api_client_secret, api_username, api_password, env, region)`</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        str_api_client_id (str): The client id</span>
+<span class="sd">        str_api_client_secret (str): The client secret</span>
+<span class="sd">        str_api_username (str): The api username</span>
+<span class="sd">        str_api_password (str): The api user password</span>
+<span class="sd">        enum_env (enum): &#39;Env.PROD&#39; or &#39;Env.PREPROD&#39;</span>
+<span class="sd">        enum_region (enum): &#39;Region.NA&#39; or &#39;Region.EU&#39;</span>
+<span class="sd">        str_priority_queue (str): &#39;realtime&#39; or &#39;bulk&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">str_api_client_id</span><span class="p">,</span>
+        <span class="n">str_api_client_secret</span><span class="p">,</span>
+        <span class="n">str_api_username</span><span class="p">,</span>
+        <span class="n">str_api_password</span><span class="p">,</span>
+        <span class="n">enum_env</span><span class="p">,</span>
+        <span class="n">enum_region</span><span class="p">,</span>
+        <span class="n">str_priority_queue</span><span class="o">=</span><span class="s2">&quot;realtime&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initializes a Geosys instance with the required credentials</span>
+<span class="sd">        to connect to the GEOSYS API.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">=</span> <span class="n">enum_region</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">enum_env</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">str_id_server_url</span> <span class="o">=</span> <span class="n">platforms</span><span class="o">.</span><span class="n">IDENTITY_URLS</span><span class="p">[</span><span class="n">enum_region</span><span class="o">.</span><span class="n">value</span><span class="p">][</span><span class="n">enum_env</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">platforms</span><span class="o">.</span><span class="n">GEOSYS_API_URLS</span><span class="p">[</span><span class="n">enum_region</span><span class="o">.</span><span class="n">value</span><span class="p">][</span><span class="n">enum_env</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master_data_management_endpoint</span> <span class="o">=</span> <span class="s2">&quot;master-data-management/v6/seasonfields&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vts_endpoint</span> <span class="o">=</span> <span class="s2">&quot;vegetation-time-series/v1/season-fields&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vts_by_pixel_endpoint</span> <span class="o">=</span> <span class="s2">&quot;vegetation-time-series/v1/season-fields/pixels&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flm_catalog_imagery</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;field-level-maps/v4/season-fields/</span><span class="si">{}</span><span class="s2">/catalog-imagery&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flm_coverage</span> <span class="o">=</span> <span class="s2">&quot;field-level-maps/v4/season-fields/</span><span class="si">{}</span><span class="s2">/coverage&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weather_endpoint</span> <span class="o">=</span> <span class="s2">&quot;Weather/v1/weather&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_endpoint</span> <span class="o">=</span> <span class="s2">&quot;analytics/metrics&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_schema_endpoint</span> <span class="o">=</span> <span class="s2">&quot;analytics/schemas&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span> <span class="o">=</span> <span class="n">str_api_client_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_secret</span> <span class="o">=</span> <span class="n">str_api_client_secret</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">str_api_username</span> <span class="o">=</span> <span class="n">str_api_username</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">str_api_password</span> <span class="o">=</span> <span class="n">str_api_password</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority_queue</span> <span class="o">=</span> <span class="n">str_priority_queue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bulk&quot;</span><span class="p">:</span> <span class="s2">&quot;Geosys_API_Bulk&quot;</span><span class="p">,</span> <span class="s2">&quot;realtime&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_lr</span> <span class="o">=</span> <span class="p">[</span><span class="n">Collection</span><span class="o">.</span><span class="n">MODIS</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_mr</span> <span class="o">=</span> <span class="p">[</span><span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_8</span><span class="p">,</span> <span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_9</span><span class="p">,</span> <span class="n">Collection</span><span class="o">.</span><span class="n">SENTINEL_2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_weather</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">Collection</span><span class="o">.</span><span class="n">WEATHER_FORECAST_DAILY</span><span class="p">,</span>
+            <span class="n">Collection</span><span class="o">.</span><span class="n">WEATHER_FORECAST_HOURLY</span><span class="p">,</span>
+            <span class="n">Collection</span><span class="o">.</span><span class="n">WEATHER_HISTORICAL_DAILY</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__authenticate</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Authenticates the client to the API.</span>
+
+<span class="sd">        This method connects the user to the API which generates a token that</span>
+<span class="sd">        will be valid for one hour. A refresh token is also generated, which</span>
+<span class="sd">        makes it possible for the http methods wrappers to get a new token</span>
+<span class="sd">        once the previous one is no more valid through the renew_access_token</span>
+<span class="sd">        decorator. This method is only run once when a Geosys object is instantiated.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">oauth</span> <span class="o">=</span> <span class="n">OAuth2Session</span><span class="p">(</span>
+                <span class="n">client</span><span class="o">=</span><span class="n">LegacyApplicationClient</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">fetch_token</span><span class="p">(</span>
+                <span class="n">token_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_id_server_url</span><span class="p">,</span>
+                <span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_username</span><span class="p">,</span>
+                <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_password</span><span class="p">,</span>
+                <span class="n">client_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span><span class="p">,</span>
+                <span class="n">client_secret</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_secret</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">[</span><span class="s2">&quot;refresh_token&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">cookies</span><span class="p">[</span><span class="s2">&quot;refresh_token&quot;</span><span class="p">]</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Authenticated&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__refresh_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fetches a new token.&quot;&quot;&quot;</span>
+
+        <span class="n">client</span> <span class="o">=</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">refresh_token</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">str_id_server_url</span><span class="p">,</span>
+            <span class="n">client_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span><span class="p">,</span>
+            <span class="n">client_secret</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_secret</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__get_matched_str_from_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the first occurence of the matched pattern in text.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pattern : A string representing the regex pattern to look for.</span>
+<span class="sd">            text : The text to look into.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A string representing the first occurence in text of the pattern.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@renew_access_token</span>
+    <span class="k">def</span> <span class="nf">__get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url_endpoint</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="sd">&quot;&quot;&quot;Gets the url_endpopint.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url_endpoint : A string representing the url to get.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A response object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_endpoint</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+    <span class="nd">@renew_access_token</span>
+    <span class="k">def</span> <span class="nf">__post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url_endpoint</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="sd">&quot;&quot;&quot;Posts payload to the url_endpoint.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url_endpoint : A string representing the url to post paylaod to.</span>
+<span class="sd">            payload : A python dict representing the payload.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A response object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url_endpoint</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+    <span class="nd">@renew_access_token</span>
+    <span class="k">def</span> <span class="nf">__patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url_endpoint</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Patchs payload to the url_endpoint.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url_endpoint : A string representing the url to patch paylaod to.</span>
+<span class="sd">            payload : A python dict representing the payload.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A response object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">url_endpoint</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__create_season_field_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Posts the payload below to the master data management endpoint.</span>
+
+<span class="sd">        This method returns a season field id. The season field id is required</span>
+<span class="sd">        to request other APIs endpoints.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon : A string representing a polygon.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A response object.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Geometry&quot;</span><span class="p">:</span> <span class="n">polygon</span><span class="p">,</span>
+            <span class="s2">&quot;Crop&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;CORN&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;SowingDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">str_mdm_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">master_data_management_endpoint</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__post</span><span class="p">(</span><span class="n">str_mdm_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__extract_season_field_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extracts the season field id from the response object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon : A string representing a polygon.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A string rerpesenting the season field id.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: The response status code is not as expected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+        <span class="n">dict_response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span>
+            <span class="ow">and</span> <span class="s2">&quot;sowingDate&quot;</span> <span class="ow">in</span> <span class="n">dict_response</span><span class="p">[</span><span class="s2">&quot;errors&quot;</span><span class="p">][</span><span class="s2">&quot;body&quot;</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\sId:\s(\w+),&quot;</span>
+            <span class="n">str_text</span> <span class="o">=</span> <span class="n">dict_response</span><span class="p">[</span><span class="s2">&quot;errors&quot;</span><span class="p">][</span><span class="s2">&quot;body&quot;</span><span class="p">][</span><span class="s2">&quot;sowingDate&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_matched_str_from_pattern</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">str_text</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dict_response</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot handle HTTP response : </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_time_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">indicators</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retrieve a time series of the indicator for the aggregated polygon on the collection targeted.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon (str): The polygon</span>
+<span class="sd">            start_date (datetime): The start date of the time series</span>
+<span class="sd">            end_date (datetime): The end date of the time series</span>
+<span class="sd">            collection (enum): The collection targeted</span>
+<span class="sd">            indicators (str list): The indicators to retrieve on the collection</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (dataframe): A pandas dataframe for the time series</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: The collection doesn&#39;t exist</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_weather</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_weather</span><span class="p">(</span>
+                <span class="n">polygon</span><span class="p">,</span>
+                <span class="n">start_date</span><span class="p">,</span>
+                <span class="n">end_date</span><span class="p">,</span>
+                <span class="n">collection</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pop</span><span class="p">(),</span>
+                <span class="n">indicators</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_lr</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_modis_time_series</span><span class="p">(</span>
+                <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">indicators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="s2"> collection doesn&#39;t exist&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_satellite_image_time_series</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="n">indicators</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retrieve a pixel-by-pxel time series of the indicator on the collection targeted.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon (str): The polygon</span>
+<span class="sd">            start_date (datetime): The start date of the time series</span>
+<span class="sd">            end_date (datetime): The end date of the time series</span>
+<span class="sd">            collections (enum list): The collections targeted</span>
+<span class="sd">            indicators (str list): The indicators to retrieve on the collections</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (&#39;dataframe or xarray&#39;): Either a pandas dataframe or an xarray for the time series</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">collections</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The argument collections is empty. It must be a list of constants.Collection objects&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">Collection</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">collections</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">collections</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_collection_lr</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_time_series_by_pixel</span><span class="p">(</span>
+                    <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">indicators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">set</span><span class="p">(</span><span class="n">collections</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_collection_mr</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_images_as_dataset</span><span class="p">(</span>
+                    <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Argument collections must be a list of constants.Collection objects&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__get_modis_time_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">indicator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a pandas DataFrame.</span>
+
+<span class="sd">        This method returns a time series of &#39;indicator&#39; within the range</span>
+<span class="sd">        &#39;start_date&#39; -&gt; &#39;end_date&#39; as a pandas DataFrame :</span>
+
+<span class="sd">                     | index     | value |</span>
+
+<span class="sd">            date     | indicator |   1   |</span>
+<span class="sd">        __________________________________</span>
+<span class="sd">         start-date  | indicator |   2   |</span>
+
+<span class="sd">            ...      |    ...    |  ...  |</span>
+
+<span class="sd">         end-date    | indicator |   8   |</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon : A string representing a polygon.</span>
+<span class="sd">            start_date : A datetime object representing the start date of the date interval the user wants to filter on.</span>
+<span class="sd">            end_date : A datetime object representing the final date of the date interval the user wants to filter on.</span>
+<span class="sd">            indicator : A string representing the indicator whose time series the user wants.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            df : A Pandas DataFrame containing two columns : index and value, and an index called &#39;date&#39;.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calling APIs for aggregated time series&quot;</span><span class="p">)</span>
+        <span class="n">str_season_field_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+        <span class="n">str_start_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">str_end_date</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/values?$offset=0&amp;$limit=9999&amp;$count=false&amp;SeasonField.Id=</span><span class="si">{</span><span class="n">str_season_field_id</span><span class="si">}</span><span class="s2">&amp;index=</span><span class="si">{</span><span class="n">indicator</span><span class="si">}</span><span class="s2">&amp;$filter=Date &gt;= &#39;</span><span class="si">{</span><span class="n">str_start_date</span><span class="si">}</span><span class="s2">&#39; and Date &lt;= &#39;</span><span class="si">{</span><span class="n">str_end_date</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+        <span class="n">str_vts_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vts_endpoint</span> <span class="o">+</span> <span class="n">parameters</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">str_vts_url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">dict_response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">dict_response</span><span class="p">))</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">df</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__get_time_series_by_pixel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">indicator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a pandas DataFrame.</span>
+
+<span class="sd">        This method returns a time series of &#39;indicator&#39; by pixel within the range &#39;start_date&#39; -&gt; &#39;end_date&#39;</span>
+<span class="sd">        as well as the pixel&#39;s coordinates X,Y in the MODIS&#39;s sinusoidal projection as a pandas DataFrame :</span>
+
+
+
+<span class="sd">                        | index     | value | pixel.id | X | Y |</span>
+<span class="sd">                        _______________________________________|</span>
+<span class="sd">            date        | indicator |       |          |   |   |</span>
+<span class="sd">            ___________________________________________________|</span>
+
+<span class="sd">            start-date  | indicator |   2   |    1     |   |   |</span>
+
+<span class="sd">            ...         | ...       |  ...  |   ...    |   |   |</span>
+
+<span class="sd">            end-date    | indicator |   8   |   1000   |   |   |</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon : A string representing a polygon.</span>
+<span class="sd">            start_date : A datetime object representing the start date of the date interval the user wants to filter on.</span>
+<span class="sd">            end_date : A datetime object representing the final date of the date interval the user wants to filter on.</span>
+<span class="sd">            indicator : A string representing the indicator whose time series the user wants.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            df : A Pandas DataFrame containing five columns : index, value, pixel.id, X, Y and an index called &#39;date&#39;.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calling APIs for time series by the pixel&quot;</span><span class="p">)</span>
+        <span class="n">str_season_field_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+        <span class="n">str_start_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">str_end_date</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/values?$offset=0&amp;$limit=9999&amp;$count=false&amp;SeasonField.Id=</span><span class="si">{</span><span class="n">str_season_field_id</span><span class="si">}</span><span class="s2">&amp;index=</span><span class="si">{</span><span class="n">indicator</span><span class="si">}</span><span class="s2">&amp;$filter=Date &gt;= &#39;</span><span class="si">{</span><span class="n">str_start_date</span><span class="si">}</span><span class="s2">&#39; and Date &lt;= &#39;</span><span class="si">{</span><span class="n">str_end_date</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+        <span class="n">str_vts_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vts_by_pixel_endpoint</span> <span class="o">+</span> <span class="n">parameters</span><span class="p">)</span>
+        <span class="c1"># PSX/PSY : size in meters of one pixel</span>
+        <span class="c1"># MODIS_GRID_LENGTH : theoretical length of the modis grid in meters</span>
+        <span class="c1"># MOIS_GRID_HEIGHT : theoretical height of the modis grid in meters</span>
+        <span class="n">PSX</span> <span class="o">=</span> <span class="mf">231.65635826</span>
+        <span class="n">PSY</span> <span class="o">=</span> <span class="o">-</span><span class="mf">231.65635826</span>
+        <span class="n">MODIS_GRID_LENGTH</span> <span class="o">=</span> <span class="mi">4800</span> <span class="o">*</span> <span class="n">PSX</span> <span class="o">*</span> <span class="mi">36</span>
+        <span class="n">MODIS_GRID_HEIGHT</span> <span class="o">=</span> <span class="mi">4800</span> <span class="o">*</span> <span class="n">PSY</span> <span class="o">*</span> <span class="mi">18</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">str_vts_url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># Extracts h, v, i and j from the pixel dataframe</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Computing X and Y coordinates per pixel... &quot;</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pixel.id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;h(.*)v&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;v&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pixel.id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;v(.*)i&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pixel.id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;i(.*)j&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;j&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pixel.id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;j(.*)$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+            <span class="c1"># XUL/YUL : The coordinates of the top left corner of the tile h,v&#39;s top left pixel</span>
+            <span class="c1">#  X/Y : the coordinates of the top left corner of the i,j pixel</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;XUL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4800</span> <span class="o">*</span> <span class="n">PSX</span> <span class="o">-</span> <span class="n">MODIS_GRID_LENGTH</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;YUL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;v&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4800</span> <span class="o">*</span> <span class="n">PSY</span> <span class="o">+</span> <span class="n">MODIS_GRID_HEIGHT</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">PSX</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;XUL&quot;</span><span class="p">]</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;j&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">PSY</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;YUL&quot;</span><span class="p">]</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Done ! &quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;pixel.id&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">]]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_satellite_coverage_image_references</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="n">Collection</span><span class="o">.</span><span class="n">SENTINEL_2</span><span class="p">,</span> <span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_8</span><span class="p">]</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retrieves a list of images that covers a polygon on a specific date range.</span>
+<span class="sd">        The return is a tuple: a dataframe with all the images covering the polygon, and </span>
+<span class="sd">                    an dictionary images_references. Key= a tuple (image_date, image_sensor).</span>
+<span class="sd">                    Value = an object image_reference, to use with the method `download_image()`</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon (str): The polygon</span>
+<span class="sd">            start_date (datetime): The start date of the time series</span>
+<span class="sd">            end_date (datetime): The end date of the time series</span>
+<span class="sd">            sensors (str list): The sensors to check the coverage on</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (tuple): images list and image references for downloading</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_satellite_coverage</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="p">)</span>
+        <span class="n">images_references</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">images_references</span><span class="p">[</span>
+                <span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.date&quot;</span><span class="p">],</span> <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.sensor&quot;</span><span class="p">])</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="n">image_reference</span><span class="o">.</span><span class="n">ImageReference</span><span class="p">(</span>
+                <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.id&quot;</span><span class="p">],</span>
+                <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.date&quot;</span><span class="p">],</span>
+                <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.sensor&quot;</span><span class="p">],</span>
+                <span class="n">image</span><span class="p">[</span><span class="s2">&quot;seasonField.id&quot;</span><span class="p">],</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">images_references</span>
+
+    <span class="k">def</span> <span class="nf">__get_satellite_coverage</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">sensors</span><span class="o">=</span><span class="p">[</span><span class="n">Collection</span><span class="o">.</span><span class="n">SENTINEL_2</span><span class="p">,</span> <span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_8</span><span class="p">]</span>
+    <span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calling APIs for coverage&quot;</span><span class="p">)</span>
+        <span class="n">str_season_field_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+        <span class="n">str_start_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">str_end_date</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sensors</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">sensors</span><span class="p">]</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;?maps.type=INSEASON_NDVI&amp;Image.Sensor=$in:</span><span class="si">{</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sensors</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;CoverageType=CLEAR&amp;$limit=9999&amp;$filter=Image.Date &gt;= &#39;</span><span class="si">{</span><span class="n">str_start_date</span><span class="si">}</span><span class="s2">&#39; and Image.Date &lt;= &#39;</span><span class="si">{</span><span class="n">str_end_date</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+
+        <span class="n">str_flm_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">flm_catalog_imagery</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">str_season_field_id</span><span class="p">)</span> <span class="o">+</span> <span class="n">parameters</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span>
+            <span class="n">str_flm_url</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">&quot;X-Geosys-Task-Code&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">priority_headers</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">priority_queue</span><span class="p">]},</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">df</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">df</span><span class="p">[</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;coverageType&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.id&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.availableBands&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.sensor&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.soilMaterial&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.spatialResolution&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.weather&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.date&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;seasonField.id&quot;</span><span class="p">,</span>
+                    <span class="p">]</span>       
+                <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__get_zipped_tiff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_id</span><span class="p">,</span> <span class="n">image_id</span><span class="p">):</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">/reflectance-map/TOC/image.tiff.zip&quot;</span>
+        <span class="n">download_tiff_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flm_coverage</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">field_id</span><span class="p">)</span> <span class="o">+</span> <span class="n">parameters</span>
+        <span class="p">)</span>
+
+        <span class="n">response_zipped_tiff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span>
+            <span class="n">download_tiff_url</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">&quot;X-Geosys-Task-Code&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">priority_headers</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">priority_queue</span><span class="p">]},</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">response_zipped_tiff</span>
+
+    <span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_reference</span><span class="p">,</span> <span class="n">str_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Downloads a satellite image locally</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            image_reference (ImageReference): An ImageReference object representing the image to download</span>
+<span class="sd">            str_path (str): the path to download the image to</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response_zipped_tiff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_zipped_tiff</span><span class="p">(</span>
+            <span class="n">image_reference</span><span class="o">.</span><span class="n">season_field_id</span><span class="p">,</span> <span class="n">image_reference</span><span class="o">.</span><span class="n">image_id</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">str_path</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">str_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;image_</span><span class="si">{</span><span class="n">image_reference</span><span class="o">.</span><span class="n">image_id</span><span class="si">}</span><span class="s2">_tiff.zip&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">str_path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;writing to </span><span class="si">{</span><span class="n">str_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response_zipped_tiff</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__get_images_as_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns all the &#39;sensors_list&#39; images covering &#39;polygon&#39; between</span>
+<span class="sd">        &#39;start_date&#39; and &#39;end_date&#39; as an xarray dataset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon : A string representing the polygon that the images will be covering.</span>
+<span class="sd">            start_date : The date from which the method will start looking for images.</span>
+<span class="sd">            end_date : The date at which the methd will stop looking images.</span>
+<span class="sd">            sensors_list : A list of the sensors&#39; names as strings.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The image&#39;s numpy array.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">get_coordinates_by_pixel</span><span class="p">(</span><span class="n">raster</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Returns the coordinates in meters in the raster&#39;s CRS</span>
+<span class="sd">            from its pixels&#39; grid coordinates.&quot;&quot;&quot;</span>
+
+            <span class="n">img</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">band1</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">height</span> <span class="o">=</span> <span class="n">band1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">width</span> <span class="o">=</span> <span class="n">band1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">height</span><span class="p">))</span>
+            <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+            <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+            <span class="n">lats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+            <span class="n">lst_lats</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">lat</span> <span class="ow">in</span> <span class="n">lats</span><span class="p">]</span>
+            <span class="n">lst_lons</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lons</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">lst_lats</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">lst_lons</span><span class="p">}</span>
+
+        <span class="c1"># Selects the covering images in the provided date range</span>
+        <span class="c1"># and sorts them by resolution, from the highest to the lowest.</span>
+        <span class="c1"># Keeps only the first image if two are found on the same date.</span>
+        <span class="n">df_coverage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_satellite_coverage</span><span class="p">(</span>
+            <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Return empty dataset if no coverage on the polygon between start_date, end_date</span>
+        <span class="k">if</span> <span class="n">df_coverage</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+
+        <span class="n">df_coverage</span><span class="p">[</span><span class="s2">&quot;image.date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+            <span class="n">df_coverage</span><span class="p">[</span><span class="s2">&quot;image.date&quot;</span><span class="p">],</span> <span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">df_coverage</span> <span class="o">=</span> <span class="n">df_coverage</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+            <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;image.spatialResolution&quot;</span><span class="p">,</span> <span class="s2">&quot;image.date&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s2">&quot;image.date&quot;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Creates a dictionary that contains a zip archive containing the tif file</span>
+        <span class="c1"># for each image id and some additional data (bands, sensor...)</span>
+        <span class="n">dict_archives</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_coverage</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">dict_archives</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;image.id&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;byte_archive&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_zipped_tiff</span><span class="p">(</span>
+                    <span class="n">row</span><span class="p">[</span><span class="s2">&quot;seasonField.id&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;image.id&quot;</span><span class="p">]</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;image.availableBands&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;image.date&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;sensor&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;image.sensor&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+
+        <span class="c1"># Extracts the tif files from  the zip archives in memory</span>
+        <span class="c1"># and transforms them into a list of xarray DataArrays.</span>
+        <span class="c1"># A list of all the raster&#39;s crs is also created in order</span>
+        <span class="c1"># to merge this data in the final xarray Dataset later on.</span>
+        <span class="n">list_xarr</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">list_crs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">first_img_id</span> <span class="o">=</span> <span class="n">df_coverage</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;image.id&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">img_id</span><span class="p">,</span> <span class="n">dict_data</span> <span class="ow">in</span> <span class="n">dict_archives</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">dict_data</span><span class="p">[</span><span class="s2">&quot;byte_archive&quot;</span><span class="p">]),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                <span class="n">list_files</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">list_files</span><span class="p">:</span>
+                    <span class="n">list_words</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">list_words</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tif&quot;</span><span class="p">:</span>
+                        <span class="n">img_in_bytes</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+                        <span class="k">with</span> <span class="n">MemoryFile</span><span class="p">(</span><span class="n">img_in_bytes</span><span class="p">)</span> <span class="k">as</span> <span class="n">memfile</span><span class="p">:</span>
+                            <span class="k">with</span> <span class="n">memfile</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">raster</span><span class="p">:</span>
+                                <span class="n">dict_coords</span> <span class="o">=</span> <span class="n">get_coordinates_by_pixel</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+                                <span class="n">xarr</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+                                    <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                                    <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;band&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">],</span>
+                                    <span class="n">coords</span><span class="o">=</span><span class="p">{</span>
+                                        <span class="s2">&quot;band&quot;</span><span class="p">:</span> <span class="n">dict_data</span><span class="p">[</span><span class="s2">&quot;bands&quot;</span><span class="p">],</span>
+                                        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">dict_coords</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+                                        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">dict_coords</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
+                                        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">dict_data</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span>
+                                    <span class="p">},</span>
+                                <span class="p">)</span>
+
+                                <span class="k">if</span> <span class="n">img_id</span> <span class="o">==</span> <span class="n">first_img_id</span><span class="p">:</span>
+                                    <span class="n">len_y</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_coords</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+                                    <span class="n">len_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_coords</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
+                                    <span class="nb">print</span><span class="p">(</span>
+                                        <span class="sa">f</span><span class="s2">&quot;The highest resolution&#39;s image grid size is </span><span class="si">{</span><span class="p">(</span><span class="n">len_x</span><span class="p">,</span> <span class="n">len_y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                                    <span class="p">)</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                                        <span class="sa">f</span><span class="s2">&quot;interpolating </span><span class="si">{</span><span class="n">img_id</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">first_img_id</span><span class="si">}</span><span class="s2">&#39;s grid&quot;</span>
+                                    <span class="p">)</span>
+                                    <span class="n">xarr</span> <span class="o">=</span> <span class="n">xarr</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span>
+                                        <span class="n">x</span><span class="o">=</span><span class="n">list_xarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                        <span class="n">y</span><span class="o">=</span><span class="n">list_xarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+                                    <span class="p">)</span>
+                                <span class="n">list_xarr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xarr</span><span class="p">)</span>
+                                <span class="n">list_crs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+
+        <span class="c1"># Adds the img&#39;s raster&#39;s crs to the initial dataframe</span>
+        <span class="n">df_coverage</span><span class="p">[</span><span class="s2">&quot;crs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_crs</span>
+
+        <span class="c1"># Concatenates all the DataArrays in list_xarr in order</span>
+        <span class="c1"># to create one final DataArray with an additional dimension</span>
+        <span class="c1"># &#39;time&#39;. This final DataArray is then transformed into</span>
+        <span class="c1"># an xarray Dataset containing one data variable &quot;reflectance&quot;.</span>
+
+        <span class="n">final_xarr</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_xarr</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">)</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;reflectance&quot;</span><span class="p">:</span> <span class="n">final_xarr</span><span class="p">})</span>
+
+        <span class="c1"># Adds additional metadata to the dataset.</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span>
+            <span class="o">**</span><span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">df_coverage</span><span class="p">[</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;image.id&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.sensor&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.soilMaterial&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.spatialResolution&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;image.weather&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;crs&quot;</span><span class="p">,</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+                <span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;list&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">dataset</span>
+
+    <span class="k">def</span> <span class="nf">__get_weather</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">weather_type</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the weather data as a pandas dataframe.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon : A string representing a polygon.</span>
+<span class="sd">            start_date : A datetime object representing the start date of the date interval the user wants to filter on.</span>
+<span class="sd">            end_date : A datetime object representing the final date of the date interval the user wants to filter on.</span>
+<span class="sd">            weather_type : A string representing the collection [&quot;HISTORICAL_DAILY&quot;, &quot;FORECAST_DAILY&quot;, &quot;FORECAST_HOURLY&quot;]</span>
+<span class="sd">            fields : An array of strings representings the fields to select (eg: Precipitation, Temperature)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The image&#39;s numpy array.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">allowed_weather_types</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;HISTORICAL_DAILY&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;FORECAST_DAILY&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;FORECAST_HOURLY&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">weather_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">allowed_weather_types</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;weather_type should be either </span><span class="si">{</span><span class="n">allowed_weather_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;Date&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+
+        <span class="n">str_start_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">str_end_date</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">polygon_wkt</span> <span class="o">=</span> <span class="n">wkt</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+        <span class="n">str_weather_fields</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;?%24offset=0&amp;%24limit=9999&amp;%24count=false&amp;Location=</span><span class="si">{</span><span class="n">polygon_wkt</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">wkt</span><span class="si">}</span><span class="s2">&amp;Date=%24between%3A</span><span class="si">{</span><span class="n">str_start_date</span><span class="si">}</span><span class="s2">T00%3A00%3A00.0000000Z%7C</span><span class="si">{</span><span class="n">str_end_date</span><span class="si">}</span><span class="s2">T00%3A00%3A00.0000000Z&amp;Provider=GLOBAL1&amp;WeatherType=</span><span class="si">{</span><span class="n">weather_type</span><span class="si">}</span><span class="s2">&amp;$fields=</span><span class="si">{</span><span class="n">str_weather_fields</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">str_weather_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weather_endpoint</span> <span class="o">+</span> <span class="n">parameters</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">str_weather_url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">df</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">polygon_wkt</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">wkt</span>
+                <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create_schema_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">schema</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a schema in Analytics Fabrics</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            schema_id (str): The schema id to create</span>
+<span class="sd">            schema (dict): Dict representing the schema {&#39;property_name&#39;: &#39;property_type&#39;}</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A http response object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">prop_name</span><span class="p">,</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="n">schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">prop_name</span><span class="p">,</span>
+                <span class="s2">&quot;Datatype&quot;</span><span class="p">:</span> <span class="n">datatype</span><span class="p">,</span>
+                <span class="s2">&quot;UnitCategory&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;IsPartOfKey&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s2">&quot;IsOptional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="n">properties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="n">schema_id</span><span class="p">,</span>
+            <span class="s2">&quot;Properties&quot;</span><span class="p">:</span> <span class="n">properties</span><span class="p">,</span>
+            <span class="s2">&quot;Metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;OnAggregationCompleted&quot;</span><span class="p">:</span> <span class="s2">&quot;Off&quot;</span><span class="p">},</span>
+        <span class="p">}</span>
+        <span class="n">str_af_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_schema_endpoint</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__post</span><span class="p">(</span><span class="n">str_af_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns metrics from Analytics Fabrics in a pandas dataframe.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon (str): A string representing a polygon.</span>
+<span class="sd">            start_date (datetime): A datetime object representing the start date of the date interval the user wants to filter on.</span>
+<span class="sd">            end_date (datetime): A datetime object representing the final date of the date interval the user wants to filter on.</span>
+<span class="sd">            schema_id (str): A string representing a schema existing in Analytics Fabrics</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            df : A Pandas DataFrame containing severals columns with metrics</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">season_field_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calling APIs for metrics&quot;</span><span class="p">)</span>
+        <span class="n">str_start_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">str_end_date</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;?%24limit=9999&amp;Timestamp=$between:</span><span class="si">{</span><span class="n">str_start_date</span><span class="si">}</span><span class="s1">|</span><span class="si">{</span><span class="n">str_end_date</span><span class="si">}</span><span class="s1">&amp;$filter=Entity.ExternalTypedIds.Contains(&quot;SeasonField:</span><span class="si">{</span><span class="n">season_field_id</span><span class="si">}</span><span class="s1">@LEGACY_ID_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s1">&quot;)&amp;$filter=Schema.Id==</span><span class="si">{</span><span class="n">schema_id</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">str_af_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_endpoint</span> <span class="o">+</span> <span class="n">parameters</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">str_af_url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Entity.TypedId&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+                <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">},</span>
+                <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">df</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">push_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Push metrics in Analytics Fabrics</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            polygon : A string representing the polygon.</span>
+<span class="sd">            schema_id : The schema on which to save</span>
+<span class="sd">            values : Dict representing values to push</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A response object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">season_field_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+            <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;Entity&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;TypedId&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;SeasonField:</span><span class="si">{</span><span class="n">season_field_id</span><span class="si">}</span><span class="s2">@LEGACY_ID_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;Schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="n">schema_id</span><span class="p">,</span> <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="p">}</span>
+            <span class="n">prop</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="o">**</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">payload</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+
+        <span class="n">str_af_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_endpoint</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__patch</span><span class="p">(</span><span class="n">str_af_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">str_api_client_id</span><span class="p">,</span> <span class="n">str_api_client_secret</span><span class="p">,</span> <span class="n">str_api_username</span><span class="p">,</span> <span class="n">str_api_password</span><span class="p">,</span> <span class="n">enum_env</span><span class="p">,</span> <span class="n">enum_region</span><span class="p">,</span> <span class="n">str_priority_queue</span><span class="o">=</span><span class="s1">&#39;realtime&#39;</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Initializes a Geosys instance with the required credentials
+to connect to the GEOSYS API.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">str_api_client_id</span><span class="p">,</span>
+    <span class="n">str_api_client_secret</span><span class="p">,</span>
+    <span class="n">str_api_username</span><span class="p">,</span>
+    <span class="n">str_api_password</span><span class="p">,</span>
+    <span class="n">enum_env</span><span class="p">,</span>
+    <span class="n">enum_region</span><span class="p">,</span>
+    <span class="n">str_priority_queue</span><span class="o">=</span><span class="s2">&quot;realtime&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializes a Geosys instance with the required credentials</span>
+<span class="sd">    to connect to the GEOSYS API.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">=</span> <span class="n">enum_region</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">enum_env</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">str_id_server_url</span> <span class="o">=</span> <span class="n">platforms</span><span class="o">.</span><span class="n">IDENTITY_URLS</span><span class="p">[</span><span class="n">enum_region</span><span class="o">.</span><span class="n">value</span><span class="p">][</span><span class="n">enum_env</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">platforms</span><span class="o">.</span><span class="n">GEOSYS_API_URLS</span><span class="p">[</span><span class="n">enum_region</span><span class="o">.</span><span class="n">value</span><span class="p">][</span><span class="n">enum_env</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">master_data_management_endpoint</span> <span class="o">=</span> <span class="s2">&quot;master-data-management/v6/seasonfields&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vts_endpoint</span> <span class="o">=</span> <span class="s2">&quot;vegetation-time-series/v1/season-fields&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vts_by_pixel_endpoint</span> <span class="o">=</span> <span class="s2">&quot;vegetation-time-series/v1/season-fields/pixels&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">flm_catalog_imagery</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;field-level-maps/v4/season-fields/</span><span class="si">{}</span><span class="s2">/catalog-imagery&quot;</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">flm_coverage</span> <span class="o">=</span> <span class="s2">&quot;field-level-maps/v4/season-fields/</span><span class="si">{}</span><span class="s2">/coverage&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">weather_endpoint</span> <span class="o">=</span> <span class="s2">&quot;Weather/v1/weather&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_endpoint</span> <span class="o">=</span> <span class="s2">&quot;analytics/metrics&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_schema_endpoint</span> <span class="o">=</span> <span class="s2">&quot;analytics/schemas&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_id</span> <span class="o">=</span> <span class="n">str_api_client_id</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">str_api_client_secret</span> <span class="o">=</span> <span class="n">str_api_client_secret</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">str_api_username</span> <span class="o">=</span> <span class="n">str_api_username</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">str_api_password</span> <span class="o">=</span> <span class="n">str_api_password</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">priority_queue</span> <span class="o">=</span> <span class="n">str_priority_queue</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">priority_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bulk&quot;</span><span class="p">:</span> <span class="s2">&quot;Geosys_API_Bulk&quot;</span><span class="p">,</span> <span class="s2">&quot;realtime&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_lr</span> <span class="o">=</span> <span class="p">[</span><span class="n">Collection</span><span class="o">.</span><span class="n">MODIS</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_mr</span> <span class="o">=</span> <span class="p">[</span><span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_8</span><span class="p">,</span> <span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_9</span><span class="p">,</span> <span class="n">Collection</span><span class="o">.</span><span class="n">SENTINEL_2</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_weather</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Collection</span><span class="o">.</span><span class="n">WEATHER_FORECAST_DAILY</span><span class="p">,</span>
+        <span class="n">Collection</span><span class="o">.</span><span class="n">WEATHER_FORECAST_HOURLY</span><span class="p">,</span>
+        <span class="n">Collection</span><span class="o">.</span><span class="n">WEATHER_HISTORICAL_DAILY</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__authenticate</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.create_schema_id" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_schema_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a schema in Analytics Fabrics</p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>schema_id</strong> (<code>str</code>) – The schema id to create</p></li>
+            <li><p><strong>schema</strong> (<code>dict</code>) – Dict representing the schema {'property_name': 'property_type'}</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+        <ul class="first simple">
+          <li><p>A http response object.</p></li>
+        </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_schema_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a schema in Analytics Fabrics</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        schema_id (str): The schema id to create</span>
+<span class="sd">        schema (dict): Dict representing the schema {&#39;property_name&#39;: &#39;property_type&#39;}</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A http response object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">prop_name</span><span class="p">,</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="n">schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">prop_name</span><span class="p">,</span>
+            <span class="s2">&quot;Datatype&quot;</span><span class="p">:</span> <span class="n">datatype</span><span class="p">,</span>
+            <span class="s2">&quot;UnitCategory&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;IsPartOfKey&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;IsOptional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">properties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="n">schema_id</span><span class="p">,</span>
+        <span class="s2">&quot;Properties&quot;</span><span class="p">:</span> <span class="n">properties</span><span class="p">,</span>
+        <span class="s2">&quot;Metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;OnAggregationCompleted&quot;</span><span class="p">:</span> <span class="s2">&quot;Off&quot;</span><span class="p">},</span>
+    <span class="p">}</span>
+    <span class="n">str_af_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_schema_endpoint</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__post</span><span class="p">(</span><span class="n">str_af_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.download_image" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">download_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_reference</span><span class="p">,</span> <span class="n">str_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Downloads a satellite image locally</p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>image_reference</strong> (<code>ImageReference</code>) – An ImageReference object representing the image to download</p></li>
+            <li><p><strong>str_path</strong> (<code>str</code>) – the path to download the image to</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_reference</span><span class="p">,</span> <span class="n">str_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Downloads a satellite image locally</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        image_reference (ImageReference): An ImageReference object representing the image to download</span>
+<span class="sd">        str_path (str): the path to download the image to</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response_zipped_tiff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_zipped_tiff</span><span class="p">(</span>
+        <span class="n">image_reference</span><span class="o">.</span><span class="n">season_field_id</span><span class="p">,</span> <span class="n">image_reference</span><span class="o">.</span><span class="n">image_id</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">str_path</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="n">str_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;image_</span><span class="si">{</span><span class="n">image_reference</span><span class="o">.</span><span class="n">image_id</span><span class="si">}</span><span class="s2">_tiff.zip&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">str_path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;writing to </span><span class="si">{</span><span class="n">str_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response_zipped_tiff</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.get_metrics" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Returns metrics from Analytics Fabrics in a pandas dataframe.</p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>polygon</strong> (<code>str</code>) – A string representing a polygon.</p></li>
+            <li><p><strong>start_date</strong> (<code>datetime</code>) – A datetime object representing the start date of the date interval the user wants to filter on.</p></li>
+            <li><p><strong>end_date</strong> (<code>datetime</code>) – A datetime object representing the final date of the date interval the user wants to filter on.</p></li>
+            <li><p><strong>schema_id</strong> (<code>str</code>) – A string representing a schema existing in Analytics Fabrics</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+        <ul class="first simple">
+          <li><p><code>df</code> – A Pandas DataFrame containing severals columns with metrics</p></li>
+        </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns metrics from Analytics Fabrics in a pandas dataframe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        polygon (str): A string representing a polygon.</span>
+<span class="sd">        start_date (datetime): A datetime object representing the start date of the date interval the user wants to filter on.</span>
+<span class="sd">        end_date (datetime): A datetime object representing the final date of the date interval the user wants to filter on.</span>
+<span class="sd">        schema_id (str): A string representing a schema existing in Analytics Fabrics</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        df : A Pandas DataFrame containing severals columns with metrics</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">season_field_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calling APIs for metrics&quot;</span><span class="p">)</span>
+    <span class="n">str_start_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">str_end_date</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;?%24limit=9999&amp;Timestamp=$between:</span><span class="si">{</span><span class="n">str_start_date</span><span class="si">}</span><span class="s1">|</span><span class="si">{</span><span class="n">str_end_date</span><span class="si">}</span><span class="s1">&amp;$filter=Entity.ExternalTypedIds.Contains(&quot;SeasonField:</span><span class="si">{</span><span class="n">season_field_id</span><span class="si">}</span><span class="s1">@LEGACY_ID_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s1">&quot;)&amp;$filter=Schema.Id==</span><span class="si">{</span><span class="n">schema_id</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">str_af_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_endpoint</span> <span class="o">+</span> <span class="n">parameters</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">str_af_url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Entity.TypedId&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">},</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.get_satellite_coverage_image_references" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_satellite_coverage_image_references</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="o">&lt;</span><span class="n">Collection</span><span class="o">.</span><span class="n">SENTINEL_2</span><span class="p">:</span> <span class="s1">&#39;SENTINEL_2&#39;</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_8</span><span class="p">:</span> <span class="s1">&#39;LANDSAT_8&#39;</span><span class="o">&gt;</span><span class="p">])</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Retrieves a list of images that covers a polygon on a specific date range.
+The return is a tuple: a dataframe with all the images covering the polygon, and 
+            an dictionary images_references. Key= a tuple (image_date, image_sensor).
+            Value = an object image_reference, to use with the method <code>download_image()</code></p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>polygon</strong> (<code>str</code>) – The polygon</p></li>
+            <li><p><strong>start_date</strong> (<code>datetime</code>) – The start date of the time series</p></li>
+            <li><p><strong>end_date</strong> (<code>datetime</code>) – The end date of the time series</p></li>
+            <li><p><strong>sensors</strong> (<code>str list</code>) – The sensors to check the coverage on</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+        <ul class="first simple">
+          <li><p><code>(tuple)</code> – images list and image references for downloading</p></li>
+        </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_satellite_coverage_image_references</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="n">Collection</span><span class="o">.</span><span class="n">SENTINEL_2</span><span class="p">,</span> <span class="n">Collection</span><span class="o">.</span><span class="n">LANDSAT_8</span><span class="p">]</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Retrieves a list of images that covers a polygon on a specific date range.</span>
+<span class="sd">    The return is a tuple: a dataframe with all the images covering the polygon, and </span>
+<span class="sd">                an dictionary images_references. Key= a tuple (image_date, image_sensor).</span>
+<span class="sd">                Value = an object image_reference, to use with the method `download_image()`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        polygon (str): The polygon</span>
+<span class="sd">        start_date (datetime): The start date of the time series</span>
+<span class="sd">        end_date (datetime): The end date of the time series</span>
+<span class="sd">        sensors (str list): The sensors to check the coverage on</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (tuple): images list and image references for downloading</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_satellite_coverage</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="p">)</span>
+    <span class="n">images_references</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">images_references</span><span class="p">[</span>
+            <span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.date&quot;</span><span class="p">],</span> <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.sensor&quot;</span><span class="p">])</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="n">image_reference</span><span class="o">.</span><span class="n">ImageReference</span><span class="p">(</span>
+            <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.id&quot;</span><span class="p">],</span>
+            <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.date&quot;</span><span class="p">],</span>
+            <span class="n">image</span><span class="p">[</span><span class="s2">&quot;image.sensor&quot;</span><span class="p">],</span>
+            <span class="n">image</span><span class="p">[</span><span class="s2">&quot;seasonField.id&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">images_references</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.get_satellite_image_time_series" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_satellite_image_time_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="n">indicators</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Retrieve a pixel-by-pxel time series of the indicator on the collection targeted.</p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>polygon</strong> (<code>str</code>) – The polygon</p></li>
+            <li><p><strong>start_date</strong> (<code>datetime</code>) – The start date of the time series</p></li>
+            <li><p><strong>end_date</strong> (<code>datetime</code>) – The end date of the time series</p></li>
+            <li><p><strong>collections</strong> (<code>enum list</code>) – The collections targeted</p></li>
+            <li><p><strong>indicators</strong> (<code>str list</code>) – The indicators to retrieve on the collections</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+        <ul class="first simple">
+          <li><p><code>('dataframe or xarray')</code> – Either a pandas dataframe or an xarray for the time series</p></li>
+        </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_satellite_image_time_series</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="n">indicators</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Retrieve a pixel-by-pxel time series of the indicator on the collection targeted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        polygon (str): The polygon</span>
+<span class="sd">        start_date (datetime): The start date of the time series</span>
+<span class="sd">        end_date (datetime): The end date of the time series</span>
+<span class="sd">        collections (enum list): The collections targeted</span>
+<span class="sd">        indicators (str list): The indicators to retrieve on the collections</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (&#39;dataframe or xarray&#39;): Either a pandas dataframe or an xarray for the time series</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">collections</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;The argument collections is empty. It must be a list of constants.Collection objects&quot;</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">Collection</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">collections</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">collections</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_collection_lr</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_time_series_by_pixel</span><span class="p">(</span>
+                <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">indicators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">set</span><span class="p">(</span><span class="n">collections</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_collection_mr</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_images_as_dataset</span><span class="p">(</span>
+                <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collections</span>
+            <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Argument collections must be a list of constants.Collection objects&quot;</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.get_time_series" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_time_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">indicators</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Retrieve a time series of the indicator for the aggregated polygon on the collection targeted.</p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>polygon</strong> (<code>str</code>) – The polygon</p></li>
+            <li><p><strong>start_date</strong> (<code>datetime</code>) – The start date of the time series</p></li>
+            <li><p><strong>end_date</strong> (<code>datetime</code>) – The end date of the time series</p></li>
+            <li><p><strong>collection</strong> (<code>enum</code>) – The collection targeted</p></li>
+            <li><p><strong>indicators</strong> (<code>str list</code>) – The indicators to retrieve on the collection</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+        <ul class="first simple">
+          <li><p><code>(dataframe)</code> – A pandas dataframe for the time series</p></li>
+        </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Exceptions:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><code>ValueError</code> – The collection doesn't exist</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_time_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">indicators</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Retrieve a time series of the indicator for the aggregated polygon on the collection targeted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        polygon (str): The polygon</span>
+<span class="sd">        start_date (datetime): The start date of the time series</span>
+<span class="sd">        end_date (datetime): The end date of the time series</span>
+<span class="sd">        collection (enum): The collection targeted</span>
+<span class="sd">        indicators (str list): The indicators to retrieve on the collection</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (dataframe): A pandas dataframe for the time series</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: The collection doesn&#39;t exist</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_weather</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_weather</span><span class="p">(</span>
+            <span class="n">polygon</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="p">,</span>
+            <span class="n">end_date</span><span class="p">,</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pop</span><span class="p">(),</span>
+            <span class="n">indicators</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_collection_lr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_modis_time_series</span><span class="p">(</span>
+            <span class="n">polygon</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">indicators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="s2"> collection doesn&#39;t exist&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="geosyspy.geosys.Geosys.push_metrics" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">push_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Push metrics in Analytics Fabrics</p>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li><p><strong>polygon</strong> – A string representing the polygon.</p></li>
+            <li><p><strong>schema_id</strong> – The schema on which to save</p></li>
+            <li><p><strong>values</strong> – Dict representing values to push</p></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+        <ul class="first simple">
+          <li><p>A response object.</p></li>
+        </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>geosyspy/geosys.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">push_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">schema_id</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Push metrics in Analytics Fabrics</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        polygon : A string representing the polygon.</span>
+<span class="sd">        schema_id : The schema on which to save</span>
+<span class="sd">        values : Dict representing values to push</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A response object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">season_field_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_season_field_id</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Entity&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;TypedId&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;SeasonField:</span><span class="si">{</span><span class="n">season_field_id</span><span class="si">}</span><span class="s2">@LEGACY_ID_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;Schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="n">schema_id</span><span class="p">,</span> <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">}</span>
+        <span class="n">prop</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="o">**</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">payload</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+
+    <span class="n">str_af_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analytics_fabric_endpoint</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__patch</span><span class="p">(</span><span class="n">str_af_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<p>handler: python
+  selection:
+    filters:
+      - "!^<em>[^</em>]"
+      - "!<strong>init</strong>(.*)"</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../constants-reference/" class="btn btn-neutral float-right" title="Constants">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../constants-reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
