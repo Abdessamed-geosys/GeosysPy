@@ -1,4 +1,4 @@
-from enum import Enum, StrEnum
+from enum import Enum
 
 
 class SatelliteImageryCollection(Enum):
@@ -36,7 +36,7 @@ class Region(Enum):
     EU = "eu"
 
 
-class GeosysApiEndpoints(StrEnum):
+class GeosysApiEndpoints(Enum):
     """
     Available Geosys APIs Endpoints
     """

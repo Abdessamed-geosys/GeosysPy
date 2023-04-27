@@ -26,7 +26,7 @@ class Oauth2Api:
         self.__authenticate()
 
     def __authenticate(self):
-        """Authenticates the client to the API.
+        """Authenticates the http_client to the API.
 
         This method connects the user to the API which generates a token that
         will be valid for one hour. A refresh token is also generated, which

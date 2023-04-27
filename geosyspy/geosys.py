@@ -6,6 +6,7 @@ import logging
 import io
 import zipfile
 from rasterio.io import MemoryFile
+from requests import HTTPError
 from shapely import wkt
 from pathlib import Path
 from geosyspy import image_reference
@@ -18,12 +19,13 @@ from geosyspy.utils.constants import *
 from geosyspy.utils.http_client import *
 from geosyspy.utils.geosys_platform_urls import *
 
+
 class Geosys:
     def __init__(self, client_id: str,
                  client_secret: str,
                  username: str,
                  password: str,
-                 enum_env: Env ,
+                 enum_env: Env,
                  enum_region: Region,
                  priority_queue: str = "realtime",
                  ):
@@ -33,19 +35,19 @@ class Geosys:
         self.region: str = enum_region.value
         self.env: str = enum_env.value
         self.base_url: str = GEOSYS_API_URLS[enum_region.value][enum_env.value]
-        self.priority_queue:str = priority_queue
-        self.client: HttpClient = HttpClient(client_id, client_secret, username, password, enum_env.value, enum_region.value)
+        self.priority_queue: str = priority_queue
+        self.http_client: HttpClient = HttpClient(client_id, client_secret, username, password, enum_env.value,
+                                                  enum_region.value)
 
-    """Geosys is the main client class to access all the Geosys APIs capabilities.
+    """Geosys is the main http_client class to access all the Geosys APIs capabilities.
 
-    `client = Geosys(api_client_id, api_client_secret, api_username, api_password, env, region)`
+    `http_client = Geosys(api_client_id, api_client_secret, api_username, api_password, env, region)`
 
     Parameters:
         enum_env: 'Env.PROD' or 'Env.PREPROD'
         enum_region: 'Region.NA' or 'Region.EU'
         priority_queue: 'realtime' or 'bulk'
     """
-
 
     def __create_season_field_id(self, polygon: str) -> object:
         """Posts the payload below to the master data management endpoint.
@@ -65,8 +67,8 @@ class Geosys:
             "Crop": {"Id": "CORN"},
             "SowingDate": "2022-01-01",
         }
-        mdm_url: str = urljoin(self.base_url, GeosysApiEndpoints.MASTER_DATA_MANAGEMENT_ENDPOINT.value)
-        return self.client.post(mdm_url, payload)
+        mdm_url: str = urljoin(self.base_url, GeosysApiEndpoints.MASTER_DATA_MANAGEMENT_ENDPOINT.value[0])
+        return self.http_client.post(mdm_url, payload)
 
     def __extract_season_field_id(self, polygon: str) -> str:
         """Extracts the season field id from the response object.
@@ -103,7 +105,7 @@ class Geosys:
                         start_date: datetime,
                         end_date: datetime,
                         collection: enumerate,
-                        indicators: list[str]) -> pd.DataFrame:
+                        indicators: [str]) -> pd.DataFrame:
         """Retrieve a time series of the indicator for the aggregated polygon on the collection targeted.
 
         Args:
@@ -204,8 +206,8 @@ class Geosys:
         start_date: str = start_date.strftime("%Y-%m-%d")
         end_date: str = end_date.strftime("%Y-%m-%d")
         parameters: str = f"/values?$offset=0&$limit=9999&$count=false&SeasonField.Id={season_field_id}&index={indicator}&$filter=Date >= '{start_date}' and Date <= '{end_date}'"
-        vts_url: str = urljoin(self.base_url, GeosysApiEndpoints.VTS_ENDPOINT.value + parameters)
-        response = self.client.get(vts_url)
+        vts_url: str = urljoin(self.base_url, GeosysApiEndpoints.VTS_ENDPOINT.value[0] + parameters)
+        response = self.http_client.get(vts_url)
 
         if response.status_code == 200:
             dict_response = response.json()
@@ -253,7 +255,7 @@ class Geosys:
         start_date: str = start_date.strftime("%Y-%m-%d")
         end_date: str = end_date.strftime("%Y-%m-%d")
         parameters: str = f"/values?$offset=0&$limit=9999&$count=false&SeasonField.Id={season_field_id}&index={indicator}&$filter=Date >= '{start_date}' and Date <= '{end_date}'"
-        vts_url: str = urljoin(self.base_url, GeosysApiEndpoints.VTS_BY_PIXEL_ENDPOINT.value + parameters)
+        vts_url: str = urljoin(self.base_url, GeosysApiEndpoints.VTS_BY_PIXEL_ENDPOINT.value[0] + parameters)
         # PSX/PSY : size in meters of one pixel
         # MODIS_GRID_LENGTH : theoretical length of the modis grid in meters
         # MOIS_GRID_HEIGHT : theoretical height of the modis grid in meters
@@ -262,7 +264,7 @@ class Geosys:
         MODIS_GRID_LENGTH = 4800 * PSX * 36
         MODIS_GRID_HEIGHT = 4800 * PSY * 18
 
-        response = self.client.get(vts_url)
+        response = self.http_client.get(vts_url)
 
         if response.status_code == 200:
             df = pd.json_normalize(response.json())
@@ -339,9 +341,9 @@ class Geosys:
 
         flm_url: str = urljoin(
             self.base_url,
-            GeosysApiEndpoints.FLM_CATALOG_IMAGERY.value.format(season_field_id) + parameters,
+            GeosysApiEndpoints.FLM_CATALOG_IMAGERY.value[0].format(season_field_id) + parameters,
         )
-        response = self.client.get(
+        response = self.http_client.get(
             flm_url,
             {"X-Geosys-Task-Code": PRIORITY_HEADERS[self.priority_queue]},
         )
@@ -354,6 +356,7 @@ class Geosys:
                 return df[
                     [
                         "coverageType",
+                        "maps",
                         "image.id",
                         "image.availableBands",
                         "image.sensor",
@@ -371,13 +374,15 @@ class Geosys:
                           image_id: str):
         parameters = f"/{image_id}/reflectance-map/TOC/image.tiff.zip"
         download_tiff_url: str = urljoin(
-            self.base_url, GeosysApiEndpoints.FLM_COVERAGE.value.format(field_id) + parameters
+            self.base_url, GeosysApiEndpoints.FLM_COVERAGE.value[0].format(field_id) + parameters
         )
 
-        response_zipped_tiff = self.client.get(
+        response_zipped_tiff = self.http_client.get(
             download_tiff_url,
             {"X-Geosys-Task-Code": PRIORITY_HEADERS[self.priority_queue]},
         )
+        if response_zipped_tiff.status_code != 200:
+            raise HTTPError("Unable to download tiff.zip file. Server error: " + str(response_zipped_tiff.status_code))
         return response_zipped_tiff
 
     def download_image(self, image_reference,
@@ -401,7 +406,8 @@ class Geosys:
     def __get_images_as_dataset(self, polygon: str,
                                 start_date: datetime,
                                 end_date: datetime,
-                                collections: list[SatelliteImageryCollection]) -> 'np.ndarray[Any , np.dtype[np.float64]]':
+                                collections: list[
+                                    SatelliteImageryCollection]) -> 'np.ndarray[Any , np.dtype[np.float64]]':
         """Returns all the 'sensors_list' images covering 'polygon' between
         'start_date' and 'end_date' as an xarray dataset.
 
@@ -472,42 +478,39 @@ class Geosys:
         first_img_id = df_coverage.iloc[0]["image.id"]
         for img_id, dict_data in dict_archives.items():
             with zipfile.ZipFile(io.BytesIO(dict_data["byte_archive"]), "r") as archive:
-                list_files = archive.namelist()
-                for file in list_files:
-                    list_words = file.split(".")
-                    if list_words[-1] == "tif":
-                        img_in_bytes = archive.read(file)
-                        with MemoryFile(img_in_bytes) as memfile:
-                            with memfile.open() as raster:
-                                dict_coords = get_coordinates_by_pixel(raster)
-                                xarr = xr.DataArray(
-                                    raster.read(masked=True),
-                                    dims=["band", "y", "x"],
-                                    coords={
-                                        "band": dict_data["bands"],
-                                        "y": dict_coords["y"],
-                                        "x": dict_coords["x"],
-                                        "time": dict_data["date"],
-                                    },
-                                )
+                images_in_bytes = [archive.read(file) for file in archive.namelist() if file.endswith('.tif')]
+                for image in images_in_bytes:
+                    with MemoryFile(image) as memfile:
+                        with memfile.open() as raster:
+                            dict_coords = get_coordinates_by_pixel(raster)
+                            xarr = xr.DataArray(
+                                raster.read(masked=True),
+                                dims=["band", "y", "x"],
+                                coords={
+                                    "band": dict_data["bands"],
+                                    "y": dict_coords["y"],
+                                    "x": dict_coords["x"],
+                                    "time": dict_data["date"],
+                                },
+                            )
 
-                                if img_id == first_img_id:
-                                    len_y = len(dict_coords["y"])
-                                    len_x = len(dict_coords["x"])
-                                    print(
-                                        f"The highest resolution's image grid size is {(len_x, len_y)}"
-                                    )
-                                else:
-                                    logging.info(
-                                        f"interpolating {img_id} to {first_img_id}'s grid"
-                                    )
-                                    xarr = xarr.interp(
-                                        x=list_xarr[0].coords["x"].data,
-                                        y=list_xarr[0].coords["y"].data,
-                                        method="linear",
-                                    )
-                                list_xarr.append(xarr)
-                                list_crs.append(raster.crs.to_string())
+                            if img_id == first_img_id:
+                                len_y = len(dict_coords["y"])
+                                len_x = len(dict_coords["x"])
+                                print(
+                                    f"The highest resolution's image grid size is {(len_x, len_y)}"
+                                )
+                            else:
+                                logging.info(
+                                    f"interpolating {img_id} to {first_img_id}'s grid"
+                                )
+                                xarr = xarr.interp(
+                                    x=list_xarr[0].coords["x"].data,
+                                    y=list_xarr[0].coords["y"].data,
+                                    method="linear",
+                                )
+                            list_xarr.append(xarr)
+                            list_crs.append(raster.crs.to_string())
 
         # Adds the img's raster's crs to the initial dataframe
         df_coverage["crs"] = list_crs
@@ -570,9 +573,9 @@ class Geosys:
         polygon_wkt = wkt.loads(polygon)
         weather_fields: str = ",".join(fields)
         parameters: str = f"?%24offset=0&%24limit=9999&%24count=false&Location={polygon_wkt.centroid.wkt}&Date=%24between%3A{start_date}T00%3A00%3A00.0000000Z%7C{end_date}T00%3A00%3A00.0000000Z&Provider=GLOBAL1&WeatherType={weather_type}&$fields={weather_fields}"
-        weather_url: str = urljoin(self.base_url, GeosysApiEndpoints.WEATHER_ENDPOINT.value + parameters)
+        weather_url: str = urljoin(self.base_url, GeosysApiEndpoints.WEATHER_ENDPOINT.value[0] + parameters)
 
-        response = self.client.get(weather_url)
+        response = self.http_client.get(weather_url)
 
         if response.status_code == 200:
             df = pd.json_normalize(response.json())
@@ -615,9 +618,9 @@ class Geosys:
         }
         af_url: str = urljoin(
             self.base_url,
-            GeosysApiEndpoints.ANALYTICS_FABRIC_SCHEMA_ENDPOINT.value,
+            GeosysApiEndpoints.ANALYTICS_FABRIC_SCHEMA_ENDPOINT.value[0],
         )
-        response = self.client.post(af_url, payload)
+        response = self.http_client.post(af_url, payload)
         if response.status_code == 201:
             return response.content
         else:
@@ -646,9 +649,9 @@ class Geosys:
         parameters: str = f'?%24limit=9999&Timestamp=$between:{start_date}|{end_date}&$filter=Entity.ExternalTypedIds.Contains("SeasonField:{season_field_id}@LEGACY_ID_{self.region.upper()}")&$filter=Schema.Id=={schema_id}'
         af_url: str = urljoin(
             self.base_url,
-            GeosysApiEndpoints.ANALYTICS_FABRIC_ENDPOINT.value + parameters,
+            GeosysApiEndpoints.ANALYTICS_FABRIC_ENDPOINT.value[0] + parameters,
         )
-        response = self.client.get(af_url)
+        response = self.http_client.get(af_url)
 
         if response.status_code == 200:
             df = pd.json_normalize(response.json())
@@ -696,9 +699,9 @@ class Geosys:
 
         af_url: str = urljoin(
             self.base_url,
-            GeosysApiEndpoints.ANALYTICS_FABRIC_SCHEMA_ENDPOINT.value,
+            GeosysApiEndpoints.ANALYTICS_FABRIC_SCHEMA_ENDPOINT.value[0],
         )
-        response = self.client.patch(af_url, payload)
+        response = self.http_client.patch(af_url, payload)
         if response.status_code == 200:
             return response.status_code
         else:
