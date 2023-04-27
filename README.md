@@ -170,7 +170,7 @@ Then :
 
 ```python
 >>> from geosyspy.geosys import Geosys
->>> from geosyspy.constants import Collection, Region, Env
+>>> from geosyspy.utils.constants import SatelliteImageryCollection, Region, Env
 >>> import os
 >>> client = Geosys(os.getenv('API_CLIENT_ID'), os.getenv('API_CLIENT_SECRET'), os.getenv('API_USERNAME'), os.getenv('API_PASSWORD'), Env.PREPROD, Region.NA)
 
@@ -184,7 +184,7 @@ Initialize client:
 
 ```python
 from geosyspy.geosys import Geosys
-from geosyspy.constants import Collection, Region, Env
+from geosyspy.utils.constants import SatelliteImageryCollection, Region, Env
 
 client = Geosys("API_CLIENT_ID", "API_CLIENT_SECRET", "API_USERNAME", "API_PASSWORD", Env.PREPROD, Region.NA)
 
@@ -198,7 +198,7 @@ polygon = "POLYGON((...))"
 today = dt.date.today()
 year_ago = dt.date.today() + relativedelta(months=-12)
 
-dataframe = client.get_time_series(polygon, year_ago, today, collection=Collection.MODIS, indicators=["NDVI"])
+dataframe = client.get_time_series(polygon, year_ago, today, collection=SatelliteImageryCollection.MODIS, indicators=["NDVI"])
 ```
 
 See the Jupyter notebook [Examples](examples.ipynb) for a working example.
